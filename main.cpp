@@ -137,5 +137,9 @@ bool Preprocess(const path& in_file, const path& out_file, const vector<path>& i
         return false;
     }
     ofstream out(out_file);
+    if (!out.is_open()) {
+        cout << "Failed to open output file: " << out_file << endl;
+        return false; 
+    }
     return ReadAndSubstitute(in_file, in, out, include_directories);
 }
